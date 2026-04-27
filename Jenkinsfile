@@ -6,7 +6,7 @@ node('built-in')
 
     try 
     {
-        sh 'mvn package'
+        sh 'mvn packa'
     } catch(Exception e)
     {
         echo "Build is failed now"
