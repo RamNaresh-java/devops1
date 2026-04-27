@@ -1,6 +1,19 @@
 node('built-in') 
 {
     stage('Continuous Download') {
+
+        git branch: 'main', url: 'https://github.com/RamNaresh-java/Maven.git'
+
+    try 
+    {
+        sh 'mvn package'
+    } catch(Exception e)
+    {
+        echo "Build is failed"
+        //Email Notification
+        mail bcc: '', body: 'CI CD and CD failed', cc: 'rama.ayanavilli@gmail.com', from: '', replyTo: '', subject: 'CI CD Process', to: 'naresh.ayanavilli@gmail.com'
+        exit(1)
+    }
         git branch: 'main', url: 'https://github.com/RamNaresh-java/Maven.git'
     }
     
